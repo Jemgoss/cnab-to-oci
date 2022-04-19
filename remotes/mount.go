@@ -91,10 +91,10 @@ func (h *descriptorCopier) Handle(ctx context.Context, desc *descriptorProgress)
 func pushWithAnnotation(ctx context.Context, pusher remotes.Pusher, ref reference.Named, desc ocischemav1.Descriptor) (content.Writer, error) {
 	// Add the distribution source annotation to help containerd
 	// mount instead of push when possible.
-	repo := fmt.Sprintf("%s.%s", labelDistributionSource, reference.Domain(ref))
-	desc.Annotations = map[string]string{
-		repo: reference.FamiliarName(ref),
-	}
+	// repo := fmt.Sprintf("%s.%s", labelDistributionSource, reference.Domain(ref))
+	// desc.Annotations = map[string]string{
+	// 	repo: reference.FamiliarName(ref),
+	// }
 	return pusher.Push(ctx, desc)
 }
 
